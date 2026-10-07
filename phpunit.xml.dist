@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         beStrictAboutOutputDuringTests="true">
+    <testsuites>
+        <testsuite name="Contract">
+            <directory>tests/Contract</directory>
+        </testsuite>
+        <testsuite name="Mutex">
+            <directory>tests/Mutex</directory>
+        </testsuite>
+        <testsuite name="Execution">
+            <directory>tests/Execution</directory>
+        </testsuite>
+        <testsuite name="Laravel">
+            <directory>tests/Laravel</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="Crunz">
+            <directory>tests/Crunz</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+</phpunit>

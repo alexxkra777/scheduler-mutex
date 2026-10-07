@@ -1,0 +1,7 @@
+# crunz reads its config from the directory it is started in, so start it from here:
+#   cd examples/crunz && php ../../vendor/bin/crunz schedule:run
+# Started anywhere else, crunz finds no config and no task files, prints "No task found!" and exits 0.
+source: tasks
+suffix: Tasks.php
+# required by crunz for its own comparisons; every task still uses its ScheduledTask timezone
+timezone: UTC

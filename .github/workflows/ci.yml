@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: PHP ${{ matrix.php }} on Ubuntu
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # 8.2 is the supported minimum, 8.5 the current release
+        php: ['8.2', '8.5']
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          # pcntl/posix are needed by the process and fork tests
+          extensions: pcntl, posix, mbstring
+          tools: composer:v2
+          coverage: none
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Install dependencies from the lock file
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Check platform requirements
+        run: composer check-platform-reqs
+
+      - name: Static analysis and tests
+        run: composer check

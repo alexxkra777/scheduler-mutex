@@ -1,0 +1,8 @@
+/vendor/
+/work/
+/.phpunit.cache/
+/var/
+/examples/storage/*
+!/examples/storage/.gitkeep
+/examples/laravel/bootstrap/cache/*
+!/examples/laravel/bootstrap/cache/.gitkeep

@@ -1,0 +1,9 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - examples/tasks
+        - examples/app
+        - examples/crunz
+    # the loader checks PHPDoc element types at runtime on purpose
+    treatPhpDocTypesAsCertain: false

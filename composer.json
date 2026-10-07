@@ -1,0 +1,50 @@
+{
+    "name": "scheduler-test/scheduler-mutex",
+    "description": "Library-neutral Scheduler and Mutex contracts with Laravel 12 and crunz adapters and an flock-based file mutex.",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "ext-pcntl": "*",
+        "ext-posix": "*",
+        "crunzphp/crunz": "^3.9.4",
+        "dragonmantank/cron-expression": "^3.4",
+        "laravel/framework": "^12.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5"
+    },
+    "suggest": {
+        "laravel/framework": "^12.0 - needed by SchedulerTest\\Infrastructure\\Laravel (Laravel Scheduler adapter)",
+        "crunzphp/crunz": "^3.9.4 - needed by SchedulerTest\\Infrastructure\\Crunz (crunz adapter and worker)",
+        "dragonmantank/cron-expression": "^3.4 - cron parser used by both adapters (comes with laravel/framework and crunzphp/crunz)"
+    },
+    "autoload": {
+        "psr-4": {
+            "SchedulerTest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SchedulerTest\\Tests\\": "tests/",
+            "SchedulerTest\\Examples\\": "examples/tasks/",
+            "SchedulerTest\\Examples\\App\\": "examples/app/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@analyse",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2.0"
+        }
+    },
+    "minimum-stability": "stable"
+}
